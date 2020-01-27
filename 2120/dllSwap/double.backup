@@ -1,0 +1,12 @@
+#include "doublyLinkedSwap.h"
+
+using namespace std;
+
+void swapWithNext( Node * p)	{
+	p->prev->next = p->next;
+	p->next->prev = p->prev;
+	p->next = p->next->next;
+	p->prev->next->next = p;
+	p->prev = p->next->prev;
+	p->next->prev = p;
+}
