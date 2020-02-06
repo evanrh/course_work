@@ -20,10 +20,12 @@ int main(int argc, char* argv[])	{
 	int a = atoi(argv[1]);
 	int b = atoi(argv[2]);
 
-	if(valid_nums_check(a,b))	{
+	valid_nums_check(&a,&b);
+
+	/*if(valid_nums_check(a,b))	{
 		fprintf(stderr,"Error! Values of a and b must be between 0 and 255\n");
 		exit(1);
-	}
+	}*/
 
 	print_table(a,b);
 	inplace_swap(&a, &b);
