@@ -12,7 +12,7 @@ int num_args_check(int argc)	{
 	return( argc != correct_argc);
 }
 
-int valid_nums_check(int *a, int *b)	{
+void valid_nums_check(int *a, int *b)	{
 	unsigned int max = 255;
 	unsigned int min = 0;
 
@@ -32,7 +32,6 @@ int valid_nums_check(int *a, int *b)	{
 		scanf("%d",b);
 	}
 
-	return(0);
 }
 
 void inplace_swap(int *a_ptr, int *b_ptr)	{
@@ -91,7 +90,8 @@ char* dec2bin(uint8_t num)	{
 	// Loop through all possible bits of the num
 	for(int i = 0; i < num_size; i++)	{
 		
-		// Mask to get last bit of the shifted number and make it a char
+		// Mask to get least significant bit of 
+		// the shifted number and make it a char
 		output[i] = ((num >> (num_size - (i + 1))) & 0x1) + '0';
 	}
 
