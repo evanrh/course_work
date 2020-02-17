@@ -1,14 +1,22 @@
-FLAGS:=-Wall -o
+FLAGS:=-Wall -save-temps -o
 OUTPUT:=PA1
 CC:=gcc
-SOURCE:=${wildcard *.c}
-ARGS:= 255 37
+SRCDIR:=src
+SOURCES:=${wildcard *.c}
+ARGS:= 25 20
 
-PA1: ${SOURCE}
-	@${CC} ${FLAGS} ${OUTPUT} ${SOURCE}
+# Compile and save temporary files
+PA1: $(SOURCES)
+	@${CC} ${FLAGS} ${OUTPUT} ${SOURCES}
+
+# Clean up compiled files
 clean:
-	rm -f ${OUTPUT} 
+	rm -f *.o *.i *.s $(OUTPUT)
+
+# Test with values in ARGS
 run: PA1
 	./${OUTPUT} $(ARGS)
+
+# Check for memory leaks
 memcheck: PA1
 	valgrind --leak-check=yes ./${OUTPUT} $(ARGS)
